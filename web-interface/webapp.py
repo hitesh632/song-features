@@ -1,3 +1,5 @@
+import os
+os.environ["MODUSA_NO_AUDIO"] = "1"
 import streamlit as st
 import modusa as ms
 import os

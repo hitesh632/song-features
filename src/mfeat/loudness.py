@@ -2,13 +2,16 @@
 
 import numpy as np
 import os
-os.environ["MODUSA_NO_AUDIO"] = "1"  # Ensure no audio backend is used
+os.environ["MODUSA_NO_AUDIO"] = "1"  # Disable modusa audio recording
 
 try:
     import modusa as ms
 except Exception:
     ms = None
-    print("⚠️ Audio features (modusa) disabled — running in Streamlit Cloud.")
+    print("⚠️ Audio functions disabled — running in Streamlit Cloud.")
+
+
+
 
 import pyloudnorm as pyln
 

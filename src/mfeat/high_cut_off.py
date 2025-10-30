@@ -47,6 +47,8 @@ def apply_adaptation_filter(y:np.ndarray, sr:int, filter_len:int):
 
 
 def get_high_cutoff_freq(path, sr=None):
+	if ms is None:
+		return None
 	"""
 	Find the high cutoff frequency for a given audio signal.
 

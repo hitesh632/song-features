@@ -181,6 +181,8 @@ def _compute_tempogram_autocorr(nov, nov_sr, N, H, norm_sum=False, theta=np.aran
 
 
 def get_tempo(path, sr: int=48000):
+	if ms is None:
+		return None
 	"""
 	Find tempo of a song along with confidence.
 

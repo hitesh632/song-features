@@ -1,7 +1,18 @@
 import os
-os.environ["MODUSA_NO_AUDIO"] = "1"
+os.environ["MODUSA_NO_AUDIO"] = "1"  # Disable audio before importing modusa
+
 import streamlit as st
-import modusa as ms
+
+# Try importing modusa but skip audio recorder
+try:
+    import modusa as ms
+except OSError:
+    # Fallback: mock sounddevice errors
+    st.warning("Audio functions are disabled in this deployment environment.")
+    ms = None
+
+import streamlit as st
+# import modusa as ms
 import os
 import tempfile
 import numpy as np

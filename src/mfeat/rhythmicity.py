@@ -3,6 +3,8 @@
 # Reference: FMP
 
 import numpy as np
+import os
+os.environ["MODUSA_NO_AUDIO"] = "1"
 import modusa as ms
 import scipy
 import librosa

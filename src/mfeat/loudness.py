@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import numpy as np
+import os
+os.environ["MODUSA_NO_AUDIO"] = "1"
 import modusa as ms
 import pyloudnorm as pyln
 

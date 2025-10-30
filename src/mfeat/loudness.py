@@ -2,8 +2,14 @@
 
 import numpy as np
 import os
-os.environ["MODUSA_NO_AUDIO"] = "1"
-import modusa as ms
+os.environ["MODUSA_NO_AUDIO"] = "1"  # Ensure no audio backend is used
+
+try:
+    import modusa as ms
+except Exception:
+    ms = None
+    print("⚠️ Audio features (modusa) disabled — running in Streamlit Cloud.")
+
 import pyloudnorm as pyln
 
 def _get_res_setting(res:str=None):

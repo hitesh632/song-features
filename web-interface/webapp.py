@@ -1,5 +1,6 @@
 import os
 import streamlit as st
+import librosa
 
 # Must be set before any modusa import
 os.environ["MODUSA_NO_AUDIO"] = "1"
@@ -63,7 +64,8 @@ if uploaded_audio is not None:
 		tmp.write(uploaded_audio.read())
 		tmp_path = tmp.name
 		
-		y, sr, _ = ms.load(tmp_path, sr=48000)
+		import librosa
+		y, sr = librosa.load(tmp_path, sr=48000)
 		title = uploaded_audio.name
 	
 		st.write(f"{title}")

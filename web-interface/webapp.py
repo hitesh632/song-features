@@ -12,7 +12,16 @@ try:
 except Exception as e:
     st.warning("Audio functions are disabled in this deployment environment.")
     ms = None
+import sys
+from pathlib import Path
+modules_dir = Path(__file__).resolve().parents[1]/"src"/"mfeat"
+sys.path.append(str(modules_dir))
 
+from loudness import get_loudness_contour
+from high_cut_off import get_high_cutoff_freq
+from tempo import get_tempo
+from rhythmicity import get_rhythmicity
+from f0_contour import get_f0_contour
 from loudness import get_loudness_contour
 
 import os

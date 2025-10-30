@@ -4,6 +4,8 @@
 
 import numpy as np
 import scipy
+import os
+os.environ["MODUSA_NO_AUDIO"] = "1"
 import modusa as ms
 import librosa
 

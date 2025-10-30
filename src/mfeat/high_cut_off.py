@@ -2,8 +2,14 @@
 
 import numpy as np
 import os
-os.environ["MODUSA_NO_AUDIO"] = "1"
-import modusa as ms
+os.environ["MODUSA_NO_AUDIO"] = "1"  # Disable modusa audio recording
+
+try:
+    import modusa as ms
+except Exception:
+    ms = None
+    print("⚠️ Audio functions disabled — running in Streamlit Cloud.")
+
 import scipy
 import librosa
 

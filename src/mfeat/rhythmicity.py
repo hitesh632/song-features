@@ -151,6 +151,8 @@ def _get_spectrum_based_novelty(X, X_sr, gamma = 10, M = 40, norm = True) -> (np
 	return novelty_spectrum, X_sr
 
 def get_rhythmicity(path, sr=48000):
+	if ms is None:
+		return None
 	"""
 	Compute local rhythmicity of a song.
 

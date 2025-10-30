@@ -1,6 +1,19 @@
+import os
+os.environ["MODUSA_NO_AUDIO"] = "1"  # Ensure no audio backend is used
 
+try:
+	import modusa as ms
+except Exception:
+	ms = None
+	print("⚠️ Audio features (modusa) disabled — running in Streamlit Cloud.")
+
+import parselmouth, librosa
+
+import numpy as np
 
 def get_f0_contour(path, sr=None, in_midi=False):
+	if ms is None:
+		return None
 	"""
 	Compute F0 contour using autocorrelation method from Praat.
 
@@ -20,18 +33,11 @@ def get_f0_contour(path, sr=None, in_midi=False):
 		Timestamp (sec).
 	"""
 	import parselmouth, librosa
-	import os
-	os.environ["MODUSA_NO_AUDIO"] = "1"  # Ensure no audio backend is used
-	
-	try:
-	    import modusa as ms
-	except Exception:
-	    ms = None
-	    print("⚠️ Audio features (modusa) disabled — running in Streamlit Cloud.")
 
 	import numpy as np
 	
 	# Load the audio signal
+	
 	y, sr, title = ms.load(path, sr=None) # Loads in mono
 	
 	time_step = 0.01

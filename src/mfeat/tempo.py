@@ -5,8 +5,14 @@
 import numpy as np
 import scipy
 import os
-os.environ["MODUSA_NO_AUDIO"] = "1"
-import modusa as ms
+os.environ["MODUSA_NO_AUDIO"] = "1"  # Ensure no audio backend is used
+
+try:
+    import modusa as ms
+except Exception:
+    ms = None
+    print("⚠️ Audio features (modusa) disabled — running in Streamlit Cloud.")
+
 import librosa
 
 def _resample_signal(y, sr, target_sr):

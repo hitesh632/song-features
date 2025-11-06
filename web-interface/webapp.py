@@ -1,17 +1,27 @@
-
-
-import streamlit as st
 import sys
-sys.modules["sounddevice"] = None  # Disable sounddevice globally
-
-import modusa as ms
 import os
+import types
+
+# ---- Disable all audio-related imports ----
+os.environ["MODUSA_NO_AUDIO"] = "1"
+sys.modules["sounddevice"] = types.SimpleNamespace()
+sys.modules["pyaudio"] = types.SimpleNamespace()
+
+# ---- Safe import of modusa ----
+try:
+    import modusa as ms
+except Exception as e:
+    ms = None
+    import streamlit as st
+    st.warning("Audio functions are disabled in this deployment environment.")
+
+# ---- Continue normal imports ----
+import streamlit as st
 import tempfile
 import numpy as np
-
-import sys
 from pathlib import Path
-modules_dir = Path(__file__).resolve().parents[1]/"src"/"mfeat"
+
+modules_dir = Path(__file__).resolve().parents[1] / "src" / "mfeat"
 sys.path.append(str(modules_dir))
 
 from loudness import get_loudness_contour
@@ -19,6 +29,7 @@ from high_cut_off import get_high_cutoff_freq
 from tempo import get_tempo
 from rhythmicity import get_rhythmicity
 from f0_contour import get_f0_contour
+
 
 
 # Create a streamlit webapp to allow users to upload an audio file (music) and plot all the 4 features

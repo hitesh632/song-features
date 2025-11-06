@@ -1,13 +1,9 @@
-#!/usr/bin/env python3
-
-#---------------------------------
-# Author: Ankit Anand
-# Date: 10/08/25
-# Email: ankit0.anand0@gmail.com
-#---------------------------------
 
 
 import streamlit as st
+import sys
+sys.modules["sounddevice"] = None  # Disable sounddevice globally
+
 import modusa as ms
 import os
 import tempfile

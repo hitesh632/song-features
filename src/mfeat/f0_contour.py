@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-
-#---------------------------------
-# Author: Ankit Anand
-# Date: 09/10/25
-# Email: ankit0.anand0@gmail.com
-#---------------------------------
 
 
 def get_f0_contour(path, sr=None, in_midi=False):
